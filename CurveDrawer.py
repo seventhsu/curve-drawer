@@ -1,24 +1,21 @@
-# from Cay Horstmann's "Java Concepts" pg. 245, Exercises P6.18 and P6.19
-
 import math
 import turtle
 
 t = turtle.Turtle()
 
 
-# equation for P6.18
-def f(val):
+def cartFunc(val):
     return (0.00005 * (math.pow(val, 3))) - (0.03 * (math.pow(val, 2))) + (4 * val) + 200
 
 
-# equation for P6.19
-def g(theta):
+def polarFunc(theta):
     r = math.cos(2 * theta)  # ONLY CHANGE THIS LINE
     cartesian_x = r * math.cos(theta)
     cartesian_y = r * math.sin(theta)
     return cartesian_x * 200, cartesian_y * 200
 
 
+# no need to touch
 def drawCartesian():
     # x-pixels over which to graph
     x_min = 0
@@ -31,15 +28,16 @@ def drawCartesian():
 
     for i in range(graph_smooth):
         t.penup()
-        coord1 = (x, f(x))
+        coord1 = (x, cartFunc(x))
         t.goto(coord1)
 
         t.pendown()
         x += d
-        coord2 = (x, f(x))
+        coord2 = (x, cartFunc(x))
         t.goto(coord2)
 
 
+# no need to touch
 def drawPolar():
     # x-pixels over which to graph
     x_min = 0
@@ -52,12 +50,12 @@ def drawPolar():
 
     for i in range(graph_smooth):
         t.penup()
-        coord1 = g(x)
+        coord1 = polarFunc(x)
         t.goto(coord1)
 
         t.pendown()
         x += d
-        coord2 = g(x)
+        coord2 = polarFunc(x)
         t.goto(coord2)
 
 
